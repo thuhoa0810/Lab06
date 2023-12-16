@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Lab06.Models.ThongKeViewModel>
+
+@{
+    ViewData["Title"] = "Statistic";
+}
+
+<h1>Statistic</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoanhThu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoHH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvgPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenLoai)
+            </td>
+            <td>
+                @item.DoanhThu.ToString("C3")
+            </td>
+            <td>
+                @item.SoHH
+            </td>
+            <td>
+                @item.MinPrice.ToString("C3")
+            </td>
+            <td>
+                @item.MaxPrice.ToString("C3")
+            </td>
+            <td>
+                @item.AvgPrice.ToString("C3")
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

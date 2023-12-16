@@ -1,0 +1,24 @@
+﻿@model IEnumerable<HangHoaVM>;
+@{
+    ViewData["Title"] = "Report";
+    Layout = "_Layout";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Search.css" />
+</head>
+
+<h3>Report Hàng hóa theo mã loại</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="GetHangHoaListByLoai">
+            <div class ="form-group">
+                <label class="control-label">Nhập mã loại:</label>
+                <input name="ID" class="form-control" />
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>

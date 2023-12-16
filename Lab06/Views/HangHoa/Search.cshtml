@@ -1,0 +1,41 @@
+﻿@model IEnumerable<HangHoaVM>;
+@{
+    ViewData["Title"] = "Search";
+    Layout = "_Layout";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Search.css" />
+</head>
+
+<h3>Tìm kiếm sản phẩm </h3> <hr />
+<form asp-action="search" method="post">
+    Name: <input name="keyword" />
+    MinPrice: <input name="priceFrom" type="number" />
+    MaxPrice: <input name="priceTo" type="number" />
+    <input type="submit" value="Search"/> 
+
+</form>
+
+@if(Model != null)
+{
+    <h2>Kết quả tim kiếm</h2> <hr />
+    <table class="table table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.MaHh)</th>
+            <th>@Html.DisplayNameFor(model => model.TenHh)</th>
+            <th>@Html.DisplayNameFor(model => model.Hinh)</th>
+            <th>@Html.DisplayNameFor(model => model.DonGia)</th>
+            <th>@Html.DisplayNameFor(model => model.Loai)</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <th>@item.MaHh</th>
+                <th>@item.TenHh</th>
+                <th><img class="hinhsp" src="~/Hinh/HangHoa/@item.Hinh" alt="@item.Hinh"/></th>
+                <th>@Html.FormatValue(item.DonGia,"{0:c}")</th>
+                <th>@item.Loai</th>
+            </tr>
+        }
+    </table>
+}

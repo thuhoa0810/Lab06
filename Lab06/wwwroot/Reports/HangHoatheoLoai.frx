@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="12/05/2023 11:41:42" ReportInfo.Modified="12/05/2023 12:18:14" ReportInfo.CreatorVersion="2024.1.0.0">
+  <Styles Name="Green">
+    <Style Name="Title" Font="Arial, 12pt, style=Bold"/>
+    <Style Name="Header" Fill.Color="PaleGreen" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Group" Font="Arial, 10pt, style=Bold"/>
+    <Style Name="Data" Font="Arial, 10pt"/>
+    <Style Name="Footer" Fill.Color="PaleGreen" Font="Arial, 10pt"/>
+    <Style Name="EvenRows" Fill.Color="Honeydew" Font="Arial, 10pt"/>
+  </Styles>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqaqzDO48ywxSOIVMI7VW+uAZoFY5bcE3rhkxDNDy3Lixd4QHA2JwYe1D8d1AaaGR8+DudwWvItkhJJ5KmUk8QDOv59pEPgSlAU/Ms9giyy2v4ds3ueN18WoDVWJMy4nIqUeOfxEAEosDbflkaydX1JBRfloqctAvzZjDjXO39wwGJT5CG0IfsbupJDn4r7TRi5e013AvxjM1nbbBWfOhPuQ==">
+      <TableDataSource Name="HangHoa" DataType="System.Int32" Enabled="true" TableName="HangHoa" SelectCommand="exec GetHangHoaByMaLoai @maloai&#13;&#10;">
+        <Column Name="MaHH" DataType="System.Int32"/>
+        <Column Name="TenHH" DataType="System.String"/>
+        <Column Name="TenAlias" DataType="System.String"/>
+        <Column Name="MaLoai" DataType="System.Int32"/>
+        <Column Name="MoTaDonVi" DataType="System.String"/>
+        <Column Name="DonGia" DataType="System.Double" Format="Currency"/>
+        <Column Name="Hinh" DataType="System.String"/>
+        <Column Name="NgaySX" DataType="System.DateTime"/>
+        <Column Name="GiamGia" DataType="System.Double"/>
+        <Column Name="SoLanXem" DataType="System.Int32"/>
+        <Column Name="MoTa" DataType="System.String"/>
+        <Column Name="MaNCC" DataType="System.String"/>
+        <CommandParameter Name="maloai" DataType="22" Expression="[maloai]"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+    <Parameter Name="CONN" DataType="System.String" AsString=""/>
+    <Parameter Name="maloai" DataType="System.String" AsString=""/>
+    <Parameter Name="tenloai" DataType="System.String" AsString=""/>
+    <Parameter Name="ncc" DataType="System.String" AsString=""/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Width="718.2" Height="37.8" Dock="Fill" Text="Hàng hóa&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Arial, 12pt, style=Bold" Style="Title"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="28.35">
+      <TextObject Name="Text5" Left="245.7" Width="122.85" Height="18.9" Fill.Color="PaleGreen" Text="Tên hàng hóa" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text9" Left="368.55" Width="122.85" Height="18.9" Fill.Color="PaleGreen" Text="Đơn giá" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text11" Left="491.4" Width="113.4" Height="18.9" Fill.Color="PaleGreen" Text="Ngày sản xuất" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text13" Left="604.8" Width="113.4" Height="18.9" Fill.Color="PaleGreen" Text="NCC" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text3" Left="122.85" Width="122.85" Height="18.9" Fill.Color="PaleGreen" Text="Mã hàng hóa&#13;&#10;" Font="Arial, 10pt, style=Bold" Style="Header"/>
+      <TextObject Name="Text7" Width="122.85" Height="18.9" Fill.Color="PaleGreen" Text="Loại" Font="Arial, 10pt, style=Bold" Style="Header"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="18.9" EvenStyle="EvenRows" DataSource="HangHoa">
+      <TextObject Name="Text4" Left="245.7" Width="122.85" Height="18.9" Text="[HangHoa.TenHH]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text8" Left="368.55" Width="122.85" Height="18.9" Text="[HangHoa.DonGia]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text10" Left="491.4" Width="113.4" Height="18.9" Text="[HangHoa.NgaySX]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text12" Left="604.8" Width="113.4" Height="18.9" Text="[HangHoa.MaNCC]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text2" Left="122.85" Width="122.85" Height="18.9" Text="[HangHoa.MaHH]" Font="Arial, 10pt" Style="Data"/>
+      <TextObject Name="Text6" Width="122.85" Height="18.9" Text="[tenloai]" Font="Arial, 10pt" Style="Data"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="97.05" Width="718.2" Height="18.9">
+      <TextObject Name="Text14" Width="718.2" Height="18.9" Dock="Fill" Fill.Color="PaleGreen" Text="[PageN]" HorzAlign="Right" Font="Arial, 10pt" Style="Footer"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

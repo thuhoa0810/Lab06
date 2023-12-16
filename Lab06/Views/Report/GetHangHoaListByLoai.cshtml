@@ -1,0 +1,9 @@
+﻿@model FastReport.Web.WebReport
+@{
+    ViewData["Title"] = "Categories - Report";
+}
+<form asp-action="ExportPDF">
+    <input name="ID" value="@ViewBag.ID" style="display:none" />
+    <input type="submit" value="Install PDF REPORT">
+    @await Model.Render()
+</form>
